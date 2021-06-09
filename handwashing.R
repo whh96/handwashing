@@ -32,4 +32,15 @@ ggplot(monthly, aes(date, proportion_deaths, color = handwashing_started, group 
   geom_line() +
   labs(x = "Year", y= "Proportion Deaths")
 
+monthly_summary <- monthly %>%
+  group_by(handwashing_started) %>%
+  summarise(mean_proportion_deaths = mean(proportion_deaths))
 
+monthly_summary
+
+monthly
+
+test_result <- t.test(proportion_deaths ~ handwashing_started, data = monthly)
+  
+  
+  
